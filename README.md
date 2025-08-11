@@ -1,5 +1,3 @@
-# OpenAvatarChat Setup Guide
-
 ## Requirements
 - **Python**: `>=3.10, <3.12`
 - **CUDA-enabled GPU**  
