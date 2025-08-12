@@ -63,7 +63,7 @@ uv run install.py --uv --config <absolute path to config file>.yaml
 
 ## 6. Run the Avatar
 ```bash
-uv run src/demo.py --config <absolute path to config file>.yaml
+uv run main.py --config <absolute path to config file>.yaml
 ```
 
 ---
