@@ -38,7 +38,7 @@ git clone --depth 1 https://huggingface.co/facebook/wav2vec2-base-960h ./models/
 
 # Download and extract LAM_audio2exp model
 wget https://huggingface.co/3DAIGC/LAM_audio2exp/resolve/main/LAM_audio2exp_streaming.tar -P ./models/LAM_audio2exp/
-tar -xzvf ./models/LAM_audio2exp/LAM_audio2exp_streaming.tar -C ./models/LAM_audio2exp
+tar -xzvf ./models/LAM_audio2exp/LAM_audio2exp_streaming.tar -C ./models/LAM_audio2exp --no-same-owner
 rm ./models/LAM_audio2exp/LAM_audio2exp_streaming.tar
 ```
 
@@ -48,14 +48,16 @@ rm ./models/LAM_audio2exp/LAM_audio2exp_streaming.tar
 ```bash
 pip install uv
 uv venv --python 3.11.11
-uv pip install setuptools pip
+source .venv/bin/activate
+uv run --active pip install setuptools pip
 ```
 
 ---
 
 ## 5. Install Project Dependencies
 ```bash
-uv run install.py --uv --config <absolute path to config file>.yaml
+uv run --active pip install twilio
+uv run --active install.py --uv --config <absolute path to config file>.yaml
 ./scripts/post_config_install.sh --config <absolute path to config file>.yaml
 ```
 
@@ -63,7 +65,8 @@ uv run install.py --uv --config <absolute path to config file>.yaml
 
 ## 6. Run the Avatar
 ```bash
-uv run main.py --config <absolute path to config file>.yaml
+cd OpenAvatarChat
+uv run --active src/demo.py --config <absolute path to config file>.yaml
 ```
 
 ---
@@ -71,3 +74,4 @@ uv run main.py --config <absolute path to config file>.yaml
 ## Notes
 - Ensure your **CUDA version** is compatible with your GPU driver before proceeding.
 - Always use the **absolute path** for the config file when running install or demo commands.
+- After coding, follow gradiowebrtc to rebuild the wheels and update the uv.lock for the changes to appear. 
