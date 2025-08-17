@@ -75,3 +75,4 @@ uv run --active src/demo.py --config <absolute path to config file>.yaml
 - Ensure your **CUDA version** is compatible with your GPU driver before proceeding.
 - Always use the **absolute path** for the config file when running install or demo commands.
 - After coding, follow gradiowebrtc to rebuild the wheels and update the uv.lock for the changes to appear. 
+- twilio turn servers are valid for only 24 hours, refresh before starting the client.
